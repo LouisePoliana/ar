@@ -1,18 +1,17 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <DallasTemperature.h>  //sensor de temperatura
-#include <OneWire.h>
+#include <OneWire.h>            //protocolo usado para se comunicar com sensores
 
 #define WIFI_SSID "Metropole"
 #define WIFI_SENHA "908070Metropole"
 
 #define LED_INTERNO 2
-#define sensorTemp 33
 #define sensorPir 23
 
-OneWire pino(32);
-DallasTemperature barramento(&pino);
-DeviceAddress sensor;
+OneWire pino(32); //instância da classe onewire que se conecta ao pino 32 do esp
+DallasTemperature barramento(&pino); //cria instância e passa a o endereço da instância pino (conexão)
+DeviceAddress sensor; //tipo de variável que armazena endereço do sensor de temperatura
   
 int valorPir = 0;
 int estadoAntes = LOW;
@@ -35,11 +34,11 @@ void setupWifi(){
   Serial.println(WiFi.localIP() );
   }
 
-void medeTemp() {
+/*void medeTemp() {
   Serial.println("Iniciando a medição da temperatura");
   if ((agora-antes) >= 60000){
-    barramento.requestTemperatures();
-    temp = barramento.getTempC(sensor);
+    barramento.requestTemperatures();  //solicita ao sensor que envie a leitura da temperatura
+    temp = barramento.getTempC(sensor); //obtém temperatura em Celsius
     if (temp >0 && temp <50){
       tempAtual = temp;
       Serial.print("Temperatura: ");
@@ -50,27 +49,30 @@ void medeTemp() {
       antes = agora;
   } 
   }
-}
+}*/
 void medeDist (){
  estadoAntes = estadoAgora;
  estadoAgora = digitalRead(sensorPir);
   if (estadoAntes == LOW && estadoAgora == HIGH){
-    Serial.print("Movimento detectado!");
+    Serial.println("Movimento detectado!");
   }else if (estadoAntes == HIGH && estadoAgora == LOW) {
-    Serial.print("Não há movimento!");
+    Serial.println("Não há movimento!");
+    //movimento detectado no início
+    //alterou com distância pequena = pouco sensível (potenciômetro), e quando alterava alternava rápidamente
+    // o estado = sensibilidade alta (delay) - potenciômetro
   }
   }
 
 void loop() {
-  setupWifi();
-  medeTemp();
+  //medeTemp();
   medeDist();
 }
 void setup() {
   Serial.begin(115200);
   setupWifi();
-  medeTemp();
+ //medeTemp();
   medeDist();
   pinMode (sensorPir, INPUT);
+  pinMode (32, INPUT_PULLUP);
   
 }
