@@ -3,6 +3,7 @@
 
 #define WIFI_SSID "Metropole"
 #define WIFI_SENHA "908070Metropole"
+#define LED_INTERNO 2
 
 void setupWifi(){
   WiFi.begin (WIFI_SSID, WIFI_SENHA);
