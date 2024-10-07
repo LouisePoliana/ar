@@ -7,11 +7,11 @@ void setup() {
   Serial.begin(115200);
   setupWifi();
   medeTemp();
-  medeDist();
-  pinMode (sensorPir, INPUT);
+  medeMov();
+  pinMode (23, INPUT);
   pinMode (32, INPUT_PULLUP); 
 }
 void loop() {
  medeTemp();
- medeDist();
+ medeMov();
 }

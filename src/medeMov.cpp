@@ -1,14 +1,11 @@
 #include <Arduino.h>
 #include "medeMov.h"
 
-#define sensorPir 23
-
-void medeDist() {
-    int valorPir = 0;
+void medeMov() {
     int estadoAntes = LOW;
     int estadoAgora =  LOW;
     estadoAntes = estadoAgora;
-    estadoAgora = digitalRead(sensorPir);
+    estadoAgora = digitalRead(SENSORPIR);
     if (estadoAntes == LOW && estadoAgora == HIGH) {
         Serial.println("Movimento detectado!");
     } else if (estadoAntes == HIGH && estadoAgora == LOW) {

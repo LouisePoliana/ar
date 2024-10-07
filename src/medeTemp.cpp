@@ -1,6 +1,6 @@
 #include <DallasTemperature.h>
 #include <OneWire.h>
-#include "medeTemp"
+#include "medeTemp.h"
 
 OneWire pino(32); //instância da classe onewire que se conecta ao pino 32 do esp
 DallasTemperature barramento(&pino); //cria instância e passa a o endereço da instância pino (conexão)
@@ -19,9 +19,6 @@ void medeTemp() {
       tempAtual = temp;
       Serial.print("Temperatura: ");
       Serial.print(tempAtual);
-      digitalWrite(LED_INTERNO, HIGH);
-      delayMicroseconds(3000); //3 segundos
-      digitalWrite(LED_INTERNO, LOW);
       antes = agora;
   } 
   }
