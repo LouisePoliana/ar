@@ -4,7 +4,10 @@
 
 extern float temp;
 extern float tempAtual;
-static unsigned long antes = 0;
+static unsigned long antes;
+extern OneWire pino;                  
+extern DallasTemperature barramento;
+extern DeviceAddress sensor;              
 
 void medeTemp();
 
