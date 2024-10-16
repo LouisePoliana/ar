@@ -8,10 +8,11 @@ void setup() {
   setupWifi();
   medeTemp();
   medeMov();
-  pinMode (23, INPUT);
-  pinMode (32, INPUT_PULLUP); 
+  pinMode (SENSORPIR, INPUT);
+  pinMode (TERM, INPUT); 
 }
 void loop() {
  medeTemp();
  medeMov();
+
 }

@@ -1,7 +1,7 @@
 #ifndef SETUPWIFI_H  // Nome da macro em maiúsculas
 #define SETUPWIFI_H
 
-extern int LED_INTERNO;
+const int LED_INTERNO = 2;
 void setupWifi();
 
 #endif

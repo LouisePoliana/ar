@@ -13,4 +13,5 @@ void setupWifi(){
   Serial.println("Conectado ao wifi!");
   Serial.println("Endereço IP: ");
   Serial.println(WiFi.localIP() );
+  digitalWrite (LED_INTERNO, HIGH);
   }
