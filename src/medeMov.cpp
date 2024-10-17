@@ -30,7 +30,7 @@ void medeMov() {
   }
   // Verifica se o tempo desde a última detecção excedeu o intervalo
   if (estadoMovimento == 1 && (millis() - ultimoTempo > intervalo)) { // se há movimento e o tempo é maior do que 10 segundos
-    Serial.println("Houve movimento a mais de 10 segundos");
+    //Serial.println("Houve movimento a mais de 10 segundos");
     estadoMovimento = 0; // Reseta o estado após o intervalo
   }
 }
